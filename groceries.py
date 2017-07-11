@@ -26,6 +26,9 @@ products = [
 print("--------------")
 print("THERE ARE " + str(len(products)) + " PRODUCTS:")
 
+for product in products:
+    print(" + " + product["name"])
+
 
 
 
