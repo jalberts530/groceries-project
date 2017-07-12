@@ -23,9 +23,9 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
-#
+
 #PRODUCTS
-#
+
 print("--------------")
 print("THERE ARE " + str(len(products)) + " PRODUCTS:")
 
@@ -34,30 +34,36 @@ for product in products:
     price_usd = ' (${0:.2f})'.format(product["price"])
     print(" + " + product["name"] + price_usd)
 
-#
+
 #DEPARTMENTS
-#
-print("--------------")
 
-departments = []
+def department_name(product):
+    return product["department"]
 
-for product in products:
-    departments.append(product["department"])
-
-departments = set(departments)
-
-print("THERE ARE " + str(len(departments)) + " DEPARTMENTS:")
+departments = map(department_name, products)
 
 departments = list(departments)
 
-departments.sort()
+departments = set(departments) # remove duplicate values
+departments = list(departments) # convert back to a list
+
+departments.sort() # this is  mutating
+
+print("--------------")
+print("THERE ARE " + str(len(departments)) +  " DEPARTMENTS:")
+
+def filter_by_department_name(products):
+    return prod
+
+def get_products(department_name):
+    matching_products = filter(filter_by_department_name, products) #stopped at 47.55 in the video
+    return matching_products
 
 for department in departments:
-    print(" + " + department.title())
+    department_products = get_products(department) #should return a list of matching products
+    product_count = len(department_products)
+    print("+ " + department.title() + " ("+ str(product_count) + " products)")
 
-
-
-#print(departments)
 
 
 
