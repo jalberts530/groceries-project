@@ -1,4 +1,4 @@
-import code
+import code #code.interact(local=locals())
 import operator
 
 products = [
@@ -37,30 +37,22 @@ for product in products:
 #
 #DEPARTMENTS
 #
-print("--------------")
-
 departments = []
 
 for product in products:
     departments.append(product["department"])
 
-departments = set(departments)
+departments = set(departments) # removing duplicate values
+departments = list(departments) # convert back to a list
+departments = sorted(departments) # sort departments
 
+print("--------------")
 print("THERE ARE " + str(len(departments)) + " DEPARTMENTS:")
 
-departments = list(departments)
-
-departments.sort()
+def get_products(department_name):
+    return [product for product in products if product["department"] == department_name] #list comprehension
 
 for department in departments:
-    print(" + " + department.title())
-
-
-
-#print(departments)
-
-
-
-
-
-#code.interact(local=locals())
+    department_products = get_products(department)
+    product_count = len(department_products)
+    print(" + " + department.title() + " (" + str(product_count) + " products)") #Prints list of departments in a list
